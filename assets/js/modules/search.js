@@ -31,14 +31,21 @@ export function initializeSearch() {
       }
   
       // Générer du HTML pour chaque recette
-      const recipesHTML = recipes.map(recipe => `
+      const recipesHTML = recipes.map(recipe => {
+        
+      const formattedIngredients = Array.isArray(recipe.ingredients)
+        ? recipe.ingredients.join(", ")
+         : "Aucun ingrédient";
+
+        // Générer le HTML pour une recette
+      return`
         <div class="recipe-card">
           <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
           <h3 class="recipe__title">${recipe.name}</h3>
           <p class="recipe__rating">${recipe.rating}⭐⭐⭐</p>
-          <p class="recipe__text">${recipe.ingredients}</p>
+          <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
         </div>
-      `);
+      `});
   
       recipesContainer.innerHTML = recipesHTML.join(''); // Insérer du HTML dans le conteneur
     };

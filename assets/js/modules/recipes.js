@@ -41,14 +41,20 @@ export function createRecipes() {
             return;
           }
     
-          const recipeCardsHTML = filteredRecipes.map((element) =>
-              `<div class="recipe-card">
+          const recipeCardsHTML = filteredRecipes.map((element) => {
+
+            const formattedIngredients = Array.isArray(element.ingredients)
+            ? element.ingredients.join(", ")
+            : "Aucun ingrédient";
+
+            return`
+              <div class="recipe-card">
                 <img class="recipe__image" src="${element.image}" alt="${element.name}">
                 <h3 class="recipe__title">${element.name}</h3>
                 <p class="recipe__rating">${element.rating} ⭐⭐⭐</p>
-                <p class="recipe__text">${element.ingredients}</p>
+                <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
               </div>`
-          );
+        });
     
           recipesContainer.innerHTML = recipeCardsHTML.join("");
         } catch (error) {
