@@ -1,6 +1,7 @@
 .header {
   display: flex;
   flex-wrap: wrap;
+  
   .header__logo {
     width: 100%;
     max-width: 100px;

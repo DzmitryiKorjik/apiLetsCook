@@ -14,15 +14,19 @@
         </div>
         <div class="header__items">
           <ul>
-            <li><a href="#">Accueil</a></li>
+            <li><a id="accueil" href="#">Accueil</a></li>
+            <li><a id="tendances" href="#">Tendances</a></li>
             <li class="nav-item dropdown">
-                <a href="#">Recettes</a>
-                <ul class="dropdown-menu">
-                  <li><a class="" href="#">Action</a></li>
-                  <li><a class="" href="#">Something</a></li>
-                </ul>
-              </li>
-            <li><a href="#">Tendances</a></li>
+              <a href="#">Recettes</a>
+              <ul class="dropdown-menu">
+                <li><a class="pizza" href="#">Pizza</a></li>
+                <li><a class="vegetarian" href="#">Vegetarian</a></li>
+                <li><a class="asian" href="#">Asian</a></li>
+                <li><a class="pasta" href="#">Pasta</a></li>
+                <li><a class="chicken" href="#">Chicken</a></li>
+                <li><a class="salad" href="#">Salad</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
         <div class="header__search">
@@ -35,12 +39,13 @@
     <main>
       <section class="title text-center">
         <h1>All recipes</h1>
-        <!-- Search Bar -->
       </section>
       <div class="container recipes p-10">
-        <!-- Mobile 1 col -->
-        <!-- Tablet 2 col -->
-        <!-- Desctop 4 col -->
+
+      </div>
+      <div class="btn__direction">
+        <button type="button" class="btn__direction-previous"><img src="assets/icons/iconmonstr-media-control-20.svg" alt="previous"></button>
+        <button type="button" class="btn__direction-next"><img src="assets/icons/iconmonstr-media-control-15.svg" alt="next"></button>
       </div>
     </main>
     <footer></footer>

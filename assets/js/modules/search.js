@@ -10,12 +10,12 @@ export function initializeSearch() {
         // Envoyer une demande à l'API avec le mot saisi
         const response = await fetch(`https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
-          throw new Error('Ошибка при выполнении запроса');
+          throw new Error("Erreur lors de l'exécution de la requête");
         }
         const data = await response.json();
         return data.recipes; // Retourne un tableau de recettes
       } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Erreur:', error);
         return [];
       }
     };
@@ -26,7 +26,7 @@ export function initializeSearch() {
   
       if (recipes.length === 0) {
         // S'il n'y a pas de recettes, un message s'affiche
-        recipesContainer.innerHTML = '<p class="text-center">Ничего не найдено</p>';
+        recipesContainer.innerHTML = '<p class="text-center">Rien trouvé</p>';
         return;
       }
   
@@ -34,8 +34,9 @@ export function initializeSearch() {
       const recipesHTML = recipes.map(recipe => `
         <div class="recipe-card">
           <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
-          <h3 class="recipe__title text-center">${recipe.name}</h3>
-          <p class="recipe__text text-center">${recipe.cuisine}</p>
+          <h3 class="recipe__title">${recipe.name}</h3>
+          <p class="recipe__rating">${recipe.rating}⭐⭐⭐</p>
+          <p class="recipe__text">${recipe.ingredients}</p>
         </div>
       `);
   
@@ -48,11 +49,11 @@ export function initializeSearch() {
   
       if (query === '') {
         // Si le champ est vide, le message suivant apparaît
-        recipesContainer.innerHTML = '<p class="text-center">Введите слово для поиска</p>';
+        recipesContainer.innerHTML = '<p class="text-center">Saisir un terme de recherche</p>';
         return;
       }
   
-      recipesContainer.innerHTML = '<p class="text-center">Загрузка...</p>'; // Affichage de l'indicateur de charge
+      recipesContainer.innerHTML = '<p class="text-center">Chargement...</p>'; // Affichage de l'indicateur de charge
   
       const recipes = await fetchRecipes(query); // Recherche de recettes
       displayRecipes(recipes); // Afficher les résultats
@@ -66,11 +67,11 @@ export function initializeSearch() {
         const query = searchInput.value.trim(); // Obtenir le mot saisi, en supprimant les espaces
   
         if (query === '') {
-          recipesContainer.innerHTML = '<p class="text-center">Введите слово для поиска</p>';
+          recipesContainer.innerHTML = '<p class="text-center">Saisir un terme de recherche</p>';
           return;
         }
   
-        recipesContainer.innerHTML = '<p class="text-center">Загрузка...</p>'; // Affichage de l'indicateur de charge
+        recipesContainer.innerHTML = '<p class="text-center">Chargement...</p>'; // Affichage de l'indicateur de charge
   
         const recipes = await fetchRecipes(query); // Recherche de recettes
         displayRecipes(recipes); // Afficher les résultats
