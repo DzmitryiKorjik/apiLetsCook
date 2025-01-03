@@ -1,0 +1,26 @@
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    font-family: var(--font-family);
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    color: #222;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

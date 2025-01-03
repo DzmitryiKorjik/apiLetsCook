@@ -1,0 +1,26 @@
+@import 'header.css';
+@import 'loader.css';
+@import 'variables.css';
+@import 'reboot.css';
+@import 'utilities.css';
+@import 'custom.css';
+
+
+
+
+.recipes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 10px;
+    .recipe-card {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+}
+
+
+
+
