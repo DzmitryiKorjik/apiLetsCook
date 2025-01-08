@@ -36,8 +36,10 @@
                 }
             }
         }
-        .recipe__title {
-            font-size: 1em;
+        .recipe__title, .recipe__cuisine {
+            font-size: 1.5em;
+            font-style: italic;
+            text-align: center;
             font-weight: bold;
             margin: 0;
             color: var(--success-color);
@@ -53,6 +55,11 @@
             margin: 0;
             color: var(--dark-color);
             margin-bottom: 25px;
+            span {
+                font-weight: bold;
+                font-style: italic;
+                color: var(--success-color);
+            }
         }
         .recipe__link {
             position: absolute;
