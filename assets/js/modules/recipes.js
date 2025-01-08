@@ -1,23 +1,23 @@
 export function createRecipes() {
-    const recipesContainer = document.querySelector(".recipes");
-    const previousButton = document.querySelector(".btn__direction-previous");
-    const nextButton = document.querySelector(".btn__direction-next");
-    const accueilButton = document.querySelector("#accueil");
-    const tendancesBtn = document.querySelector('#tendances');
+  const recipesContainer = document.querySelector(".recipes");
+  const previousButton = document.querySelector(".btn__direction-previous");
+  const nextButton = document.querySelector(".btn__direction-next");
+  const accueilButton = document.querySelector("#accueil");
+  const tendancesBtn = document.querySelector("#tendances");
 
-    let currentPage = 1;
-    const recipesPerPage = 12;
+  let currentPage = 1;
+  const recipesPerPage = 12;
 
-    const fetchData = async (page) => {
-        const response = await fetch(
-          `https://dummyjson.com/recipes?limit=${recipesPerPage}&skip=${(page - 1) * recipesPerPage}&sortBy=id&order=desc`
-        );
-        const data = await response.json();
-        return data;
-      };
+  const fetchData = async (page) => {
+    const response = await fetch(
+      `https://dummyjson.com/recipes?limit=${recipesPerPage}&skip=${(page - 1) * recipesPerPage}&sortBy=id&order=desc`
+    );
+    const data = await response.json();
+    return data;
+  };
 
-    const displayData = async (page, filterFn = null) => {
-        recipesContainer.innerHTML = `
+  const displayData = async (page, filterFn = null) => {
+    recipesContainer.innerHTML = `
           <div class="loader-container">
             <div class="loader">
               <div class="inner-circle"></div>
@@ -25,44 +25,50 @@ export function createRecipes() {
             <div class="loading-text">Chargement<span class="dots"></span></div>
           </div>
         `;
-        try {
-          const data = await fetchData(page);
-    
-          recipesContainer.innerHTML = "";
+    try {
+      const data = await fetchData(page);
 
-          // Appliquer le filtrage si la fonction de filtrage est passée dans
-          let filteredRecipes = data.recipes;
-          if (filterFn) {
-            filteredRecipes = filteredRecipes.filter(filterFn);
-          }
-    
-          if (filteredRecipes.length === 0) {
-            recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
-            return;
-          }
-    
-          const recipeCardsHTML = filteredRecipes.map((element) => {
+      recipesContainer.innerHTML = "";
 
-            const formattedIngredients = Array.isArray(element.ingredients)
-            ? element.ingredients.join(", ")
-            : "Aucun ingrédient";
+      // Appliquer le filtrage si la fonction de filtrage est passée dans
+      let filteredRecipes = data.recipes;
+      if (filterFn) {
+        filteredRecipes = filteredRecipes.filter(filterFn);
+      }
 
-            return`
-              <div class="recipe-card">
-                <img class="recipe__image" src="${element.image}" alt="${element.name}">
+      if (filteredRecipes.length === 0) {
+        recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+        return;
+      }
+
+      const recipeCardsHTML = filteredRecipes.map((element) => {
+        const formattedIngredients = Array.isArray(element.ingredients)
+          ? element.ingredients.join(", ").substring(0, 50) + " ..."
+          : "Aucun ingrédient";
+
+        const fullIngredients = Array.isArray(element.ingredients)
+          ? element.ingredients.join(", ")
+          : "Aucun ingrédient";
+
+        return `
+              <div class="recipe-card" data-id=${element.id}>
+                <div class="image-box">
+                  <img class="recipe__image" src="${element.image}" alt="${element.name}">
+                </div>
                 <h3 class="recipe__title">${element.name}</h3>
-                <p class="recipe__rating">${element.rating} ⭐⭐⭐</p>
-                <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
-              </div>`
-        });
-    
-          recipesContainer.innerHTML = recipeCardsHTML.join("");
-        } catch (error) {
-          recipesContainer.innerHTML = "<p>Erreur de chargement des données.</p>";
-        }
-    };
+                <p class="recipe__rating">Difficulté: ${element.rating} ⭐⭐⭐</p>
+                <p class="recipe__text timesNewRoman" data-full-ingredients="${fullIngredients}">${formattedIngredients}</p>
+                <a href="#" class="recipe__link">En savoir plus...</a>
+              </div>`;
+      });
 
-      // Gestionnaires d'événements pour les boutons
+      recipesContainer.innerHTML = recipeCardsHTML.join("");
+    } catch (error) {
+      recipesContainer.innerHTML = "<p>Erreur de chargement des données.</p>";
+    }
+  };
+
+  // Gestionnaires d'événements pour les boutons
   previousButton.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;

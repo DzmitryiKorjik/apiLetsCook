@@ -7,7 +7,7 @@ export function menuTags() {
             if (!response.ok) throw new Error('Failed to fetch tags');
 
             const tags = await response.json();
-            console.log('API Response (tags array):', tags); // Enregistrer le tableau reçu
+            // console.log('API Response (tags array):', tags); // Enregistrer le tableau reçu
 
             // Vérifier si la réponse est un tableau
             if (!Array.isArray(tags)) {

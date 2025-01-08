@@ -53,16 +53,19 @@ export function menuRecipes() {
       // Crée les cartes de recette HTML
       const recipeCardsHTML = filteredRecipes.map((recipe) => {
         const formattedIngredients = Array.isArray(recipe.ingredients)
-          ? recipe.ingredients.join(", ") // Formatte les ingrédients sous forme de chaîne
+          ? recipe.ingredients.join(", ").substring(0, 80) + "..." // Formatte les ingrédients sous forme de chaîne
           : "Aucun ingrédient";
 
         return `
-                <div class="recipe-card">
-                  <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
-                  <h3 class="recipe__title">${recipe.name}</h3>
-                  <p class="recipe__rating">${recipe.rating} ⭐⭐⭐</p>
-                  <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
-                </div>`;
+          <div class="recipe-card">
+          <div class="image-box">
+            <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
+          </div>
+            <h3 class="recipe__title">${recipe.name}</h3>
+            <p class="recipe__rating">Difficulté: ${recipe.rating} ⭐⭐⭐</p>
+            <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
+            <a href="#" class="recipe__link">En savoir plus...</a>
+          </div>`;
       });
 
       // Injecte le HTML généré dans le conteneur des recettes

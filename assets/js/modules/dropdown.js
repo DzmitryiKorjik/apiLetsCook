@@ -1,7 +1,7 @@
 export function initializeDropdown() {
-  console.log('Initializing dropdown...');
+  // console.log('Initializing dropdown...');
   const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
-  console.log('Dropdown items found:', dropdownItems);
+  // console.log('Dropdown items found:', dropdownItems);
 
   dropdownItems.forEach(item => {
     const toggle = item.querySelector('.dropdown-toggle');

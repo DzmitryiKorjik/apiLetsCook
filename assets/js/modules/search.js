@@ -35,16 +35,23 @@ export function initializeSearch() {
       const recipesHTML = recipes.map(recipe => {
         
       const formattedIngredients = Array.isArray(recipe.ingredients)
-        ? recipe.ingredients.join(", ")
+        ? recipe.ingredients.join(", ").substring(0, 50) + "..."
+         : "Aucun ingrédient";
+
+         const fullIngredients = Array.isArray(recipe.ingredients)
+         ? recipe.ingredients.join(", ")
          : "Aucun ingrédient";
 
         // Générer le HTML pour une recette
       return`
         <div class="recipe-card">
-          <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
+          <div class="image-box">
+            <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
+          </div>
           <h3 class="recipe__title">${recipe.name}</h3>
-          <p class="recipe__rating">${recipe.rating}⭐⭐⭐</p>
-          <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
+          <p class="recipe__rating">Difficulté: ${recipe.rating} ⭐⭐⭐</p>
+          <p class="recipe__text timesNewRoman" data-full-ingredients="${fullIngredients}">${formattedIngredients}</p>
+          <a href="#" class="recipe__link">En savoir plus...</a>
         </div>
       `});
   
