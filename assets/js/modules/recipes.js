@@ -1,5 +1,5 @@
 export function createRecipes() {
-  const recipesContainer = document.querySelector(".recipes");
+    const recipesContainer = document.querySelector(".recipes");
     const previousButton = document.querySelector(".btn__direction-previous");
     const nextButton = document.querySelector(".btn__direction-next");
     const accueilButton = document.querySelector("#accueil");

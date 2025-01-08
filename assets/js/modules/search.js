@@ -9,6 +9,7 @@ export function initializeSearch() {
       try {
         // Envoyer une demande à l'API avec le mot saisi
         const response = await fetch(`https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`);
+        console.log(response);
         if (!response.ok) {
           throw new Error("Erreur lors de l'exécution de la requête");
         }
