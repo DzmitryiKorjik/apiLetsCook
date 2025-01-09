@@ -37,7 +37,7 @@ export function createRecipes() {
       }
 
       if (filteredRecipes.length === 0) {
-        recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+        recipesContainer.innerHTML = `<p class="text-center">Aucune recette trouvée.</p>`;
         return;
       }
 
@@ -64,7 +64,7 @@ export function createRecipes() {
 
       recipesContainer.innerHTML = recipeCardsHTML.join("");
     } catch (error) {
-      recipesContainer.innerHTML = "<p>Erreur de chargement des données.</p>";
+      recipesContainer.innerHTML = `<p class="text-center">Erreur de chargement des données.</p>`;
     }
   };
 

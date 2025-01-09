@@ -27,7 +27,7 @@ export function initializeSearch() {
   
       if (recipes.length === 0) {
         // S'il n'y a pas de recettes, un message s'affiche
-        recipesContainer.innerHTML = '<p class="text-center">Rien trouvé</p>';
+        recipesContainer.innerHTML = `<p class="text-center">Rien trouvé</p>`;
         return;
       }
   
@@ -44,7 +44,7 @@ export function initializeSearch() {
 
         // Générer le HTML pour une recette
       return`
-        <div class="recipe-card">
+        <div class="recipe-card" data-id=${recipe.id}>
           <div class="image-box">
             <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
           </div>
@@ -64,11 +64,11 @@ export function initializeSearch() {
   
       if (query === '') {
         // Si le champ est vide, le message suivant apparaît
-        recipesContainer.innerHTML = '<p class="text-center">Saisir un terme de recherche</p>';
+        recipesContainer.innerHTML = `<p class="text-center">Saisir un terme de recherche</p>`;
         return;
       }
   
-      recipesContainer.innerHTML = '<p class="text-center">Chargement...</p>'; // Affichage de l'indicateur de charge
+      recipesContainer.innerHTML = `<p class="text-center">Chargement...</p>`; // Affichage de l'indicateur de charge
   
       const recipes = await fetchRecipes(query); // Recherche de recettes
       displayRecipes(recipes); // Afficher les résultats
@@ -82,11 +82,11 @@ export function initializeSearch() {
         const query = searchInput.value.trim(); // Obtenir le mot saisi, en supprimant les espaces
   
         if (query === '') {
-          recipesContainer.innerHTML = '<p class="text-center">Saisir un terme de recherche</p>';
+          recipesContainer.innerHTML = `<p class="text-center">Saisir un terme de recherche</p>`;
           return;
         }
   
-        recipesContainer.innerHTML = '<p class="text-center">Chargement...</p>'; // Affichage de l'indicateur de charge
+        recipesContainer.innerHTML = `<p class="text-center">Chargement...</p>`; // Affichage de l'indicateur de charge
   
         const recipes = await fetchRecipes(query); // Recherche de recettes
         displayRecipes(recipes); // Afficher les résultats

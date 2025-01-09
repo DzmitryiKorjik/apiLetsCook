@@ -46,7 +46,7 @@ export function menuRecipes() {
 
       // Si aucune recette n'est trouvée, affiche un message d'erreur
       if (filteredRecipes.length === 0) {
-        recipesContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+        recipesContainer.innerHTML = `<p class="text-center">Aucune recette trouvée.</p>`;
         return;
       }
 
@@ -57,14 +57,14 @@ export function menuRecipes() {
           : "Aucun ingrédient";
 
         return `
-          <div class="recipe-card">
-          <div class="image-box">
-            <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
-          </div>
-            <h3 class="recipe__title">${recipe.name}</h3>
-            <p class="recipe__rating">Difficulté: ${recipe.rating} ⭐⭐⭐</p>
-            <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
-            <a href="#" class="recipe__link">En savoir plus...</a>
+          <div class="recipe-card" data-id=${recipe.id}>
+            <div class="image-box">
+              <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
+            </div>
+              <h3 class="recipe__title">${recipe.name}</h3>
+              <p class="recipe__rating">Difficulté: ${recipe.rating} ⭐⭐⭐</p>
+              <p class="recipe__text timesNewRoman">${formattedIngredients}</p>
+              <a href="#" class="recipe__link">En savoir plus...</a>
           </div>`;
       });
 
@@ -72,7 +72,7 @@ export function menuRecipes() {
       recipesContainer.innerHTML = recipeCardsHTML.join("");
     } catch (error) {
       // Si une erreur se produit pendant le chargement, affiche un message d'erreur
-      recipesContainer.innerHTML = "<p>Erreur de chargement des données.</p>";
+      recipesContainer.innerHTML = `<p class="text-center">Erreur de chargement des données.</p>`;
     }
   };
 

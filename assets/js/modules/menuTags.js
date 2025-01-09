@@ -15,7 +15,7 @@ export function menuTags() {
             }
 
             if (tags.length === 0) {
-                dropdownMenu.innerHTML = '<li>Aucun tag disponible</li>';
+                dropdownMenu.innerHTML = `<li class="text-center">Aucun tag disponible</li>`;
                 return;
             }
 
@@ -33,7 +33,7 @@ export function menuTags() {
             });
         } catch (error) {
             console.error('Error loading tags:', error);
-            dropdownMenu.innerHTML = '<li>Erreur lors du chargement des tags</li>';
+            dropdownMenu.innerHTML = `<li class="text-center">Erreur lors du chargement des tags</li>`;
         }
     }
     loadMenuTags();

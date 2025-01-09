@@ -44,7 +44,7 @@ export function savoir() {
                 const recipe = await response.json();
 
                 recipeDetailContainer.innerHTML = `
-                    <div class="recipe-card">
+                    <div class="recipe-card" data-id=${recipe.id}>
                         <div class="image-box">
                             <img class="recipe__image" src="${recipe.image}" alt="${recipe.name}">
                         </div>
@@ -63,7 +63,7 @@ export function savoir() {
 
             } catch (error) {
                 console.error("Erreur lors de la récupération de la recette: ", error);
-                recipeDetailContainer.innerHTML = "<p>Erreur de chargement des données.</p>";
+                recipeDetailContainer.innerHTML = `<p class="text-center">Erreur de chargement des données.</p>`;
             }
         }
     });
