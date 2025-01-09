@@ -98,6 +98,10 @@ Ce projet a été conçu pour :
 
 - Le projet sera déployé sur **Vercel**. Accédez à l'application ici : [Let's Cook](https://lets-cook.vercel.app).
 
+### Affichage
+
+- Le projet sur l'application : [Let's Cook](https://api-lets-cook.vercel.app/)
+
 ## Auteur
 
 - **Nom :** MARDOVITCH Dzmitryi
