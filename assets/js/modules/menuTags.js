@@ -1,5 +1,5 @@
 export function menuTags() {
-    const dropdownMenu = document.querySelector('#dropdown .dropdown-menu')
+    const dropdownMenu = document.querySelector('#dropdown .dropdown-menu-items')
 
     async function loadMenuTags() {
         try {

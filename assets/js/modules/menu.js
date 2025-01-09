@@ -4,7 +4,7 @@ export function menuRecipes() {
   const previousButton = document.querySelector(".btn__direction-previous");
   const nextButton = document.querySelector(".btn__direction-next");
   const accueilButton = document.querySelector("#accueil");
-  const dropdownMenu = document.querySelector("#dropdown .dropdown-menu");
+  const dropdownMenu = document.querySelector("#dropdown .dropdown-menu-items");
 
   let currentPage = 1; // Initialise la page actuelle à 1
   const recipesPerPage = 12; // Définit le nombre de recettes par page

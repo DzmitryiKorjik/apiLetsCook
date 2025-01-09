@@ -2,13 +2,16 @@
     display: flex;
     justify-content: center;
     button {
-        margin: 20px 20px;
-        padding: 10px 20px;
-        border: 1px solid var(--dark-color);
-        border-radius: 10px;
-        background-color: var(--warning-color);
-        color: var(--dark-color);
-        font-weight: bold;
+        margin: 20px;
+        background-color: var(--dark-color);
+        color: var(--light-color);
+        border: 1px solid var(--light-color);
+        border-radius: 5px;
+        padding: 5px 20px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: var(--warning-color );
+        }
     }
 }

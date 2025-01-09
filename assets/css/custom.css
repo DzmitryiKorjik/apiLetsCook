@@ -1,12 +1,12 @@
 body {
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--dark-color);
+    color: var(--light-color);
     font-family: var(--font-family);
 }
 
 header, footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--dark-color);
+    color: var(--light-color);
     padding: 20px;
     text-align: center;
 }
@@ -14,7 +14,7 @@ header, footer {
 h1, h2, h3 {
     font-weight: bold;
     color: var(--success-color);
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Times New Roman', Times, serif;
 }
 
 h1 {

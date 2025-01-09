@@ -1,0 +1,46 @@
+/* Pour les téléphones portables en orientation portrait */
+@media only screen and (max-width: 599px) {
+    .header__logo {
+        display: none;
+    }
+    .header__menu-items {
+        margin: 0;
+        flex-direction: column;
+        align-items: start;
+        padding: 0;
+        li {
+            margin: 10px 0;
+        }
+    }
+    .header__search {
+        top: 25px;
+        input {
+            width: 125px;
+        }
+        button {
+            width: 25px;
+            padding: 5px 2px !important;
+        }
+    }
+    footer p {
+        font-size: 0.6em !important;
+    }
+  }
+  
+  /* Pour les téléphones mobiles en orientation paysage */
+  @media only screen and (min-width: 600px) and (max-width: 899px) {
+    .header__logo {
+        display: none;
+    }
+    .header__menu-items {
+        margin: 0;
+        flex-direction: column;
+        align-items: start;
+        li {
+            margin: 10px 0;
+        }
+    }
+  }
+  
+
+  

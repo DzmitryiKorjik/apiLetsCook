@@ -8,26 +8,27 @@
     <title>Lets Cook</title>
   </head>
   <body>
-    <header class="header">
+    <header class="container header">
         <div class="header__logo">
           <img src="assets/images/logo.svg" alt="logo" />
         </div>
-        <div class="header__items">
-          <ul>
+        <nav class="header__menu">
+          <ul class="header__menu-items">
             <li><a id="accueil" href="#">Accueil</a></li>
             <li><a id="tendances" href="#">Tendances</a></li>
-            <li id="dropdown" class="nav-item">
-              <a href="#">Recettes</a>
-              <ul class="dropdown-menu"></ul>
+            <li id="dropdown" class="dropdown-item">
+              <a id="dropdownMenu" href="#">Recettes</a>
+              <ul class="dropdown-menu-items"></ul>
             </li>
           </ul>
-        </div>
-        <div class="header__search">
-            <input class="search" type="search" placeholder="Rechercher une recette" />
+          <div class="header__search">
+            <input class="search" type="search" placeholder="Rechercher..." />
             <button title="search" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
+        </nav>
+
     </header>
     <main>
       <section class="title text-center">
@@ -36,11 +37,13 @@
       <div class="container recipes"></div>
       <div class="container recipes-detail"></div>
       <div class="btn__direction">
-        <button type="button" class="btn__direction-previous"><img src="assets/icons/iconmonstr-media-control-20.svg" alt="previous"></button>
-        <button type="button" class="btn__direction-next"><img src="assets/icons/iconmonstr-media-control-15.svg" alt="next"></button>
+        <button type="button" class="btn__direction-previous"><<</button>
+        <button type="button" class="btn__direction-next">>></button>
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <p>&copy; 2025 Lets Cook. Tous droits réservés.</p>
+    </footer>
     <script type="module" src="assets/js/index.js"></script>
   </body>
 </html>

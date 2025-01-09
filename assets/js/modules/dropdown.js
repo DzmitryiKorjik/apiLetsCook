@@ -1,33 +1,34 @@
 export function initializeDropdown() {
-  // console.log('Initializing dropdown...');
-  const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
-  // console.log('Dropdown items found:', dropdownItems);
+  const btnRecettes = document.querySelector('#dropdownMenu');
+  const dropdownMenu = document.querySelector('.dropdown-menu-items');
+  const recipes = document.querySelector('.recipes');
 
-  dropdownItems.forEach(item => {
-    const toggle = item.querySelector('.dropdown-toggle');
-    const menu = item.querySelector('.dropdown-menu');
+  if (!btnRecettes || !dropdownMenu || !recipes) {
+    console.error('Erreur : les éléments nécessaires n\'ont pas été trouvés');
+    return;
+  }
 
-    console.log('Item:', item);
-    console.log('Toggle:', toggle);
-    console.log('Menu:', menu);
+  // Afficher ou masquer les menus
+  btnRecettes.addEventListener('click', function (e) {
+    e.preventDefault();
+    dropdownMenu.classList.toggle('active');
+  });
 
-    if (!toggle || !menu) {
-      console.warn('Missing .dropdown-toggle or .dropdown-menu');
-      return;
+  // Traitement de la sélection d'un élément de menu
+  dropdownMenu.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const clickedItem = e.target.closest('a'); // Vérifier si le lien a été cliqué
+    if (clickedItem) {
+      recipes.textContent = clickedItem.textContent; // Régler la valeur sélectionnée
+      dropdownMenu.classList.remove('active'); // Fermeture du menu
     }
+  });
 
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!item.contains(e.target)) {
-        menu.style.display = 'none';
-      }
-    });
+  // Réinitialisation du texte et fermeture du menu en cas de clic extérieur
+  document.addEventListener('click', function (e) {
+    if (!dropdownMenu.contains(e.target) && e.target !== btnRecettes) {
+      dropdownMenu.classList.remove('active');
+    }
   });
 }
-
-
-  
